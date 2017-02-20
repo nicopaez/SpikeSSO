@@ -1,5 +1,12 @@
 ﻿<div class="jumbotron">
     <h1>Web API</h1>
     <p class="lead">This is application offers business features in the form of a Web Api. The Api is secured so to call it an authentication toked (bearer jwt) should be included in the request.</p>
+
+    <p>The project itself is an standart WebApi project with the following changes:</p>
+    <ul>
+        <li>Authentication configuration was added in the startup class</li>
+        <li>The authetication configuration parameters (AudienceId and AudienceSecret) were added to web.config</li>
+        <li>API controllers/methods where decorated with Authorize attribute to make the secure (see ValuesController)</li>
+     </ul>
     <p><a href="help" class="btn btn-primary btn-lg">See API details</a></p>
 </div>
