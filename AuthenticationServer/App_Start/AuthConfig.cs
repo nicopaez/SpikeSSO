@@ -22,6 +22,7 @@ namespace AuthenticationServer.App_Start
     {
         public static void Configure(IAppBuilder app)
         {
+            string issuer = ConfigurationManager.AppSettings["as:Issuer"];
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
@@ -29,7 +30,7 @@ namespace AuthenticationServer.App_Start
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://auth/")
+                AccessTokenFormat = new CustomJwtFormat(issuer)
             };
 
             // OAuth 2.0 Bearer Access Token Generation

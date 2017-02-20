@@ -8,3 +8,4 @@
 
 Notes:
 * In a real scenario everything should run under https
+* Token signing is based on symmetric key that is generated based on AudienceSecret parameter

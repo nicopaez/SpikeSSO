@@ -23,8 +23,7 @@ namespace WebApi
 
         private void ConfigureOAuthTokenConsumption(IAppBuilder app)
         {
-
-            var issuer = "http://auth/";
+            string issuer = ConfigurationManager.AppSettings["as:Issuer"];
             string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
             byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
 

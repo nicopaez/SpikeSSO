@@ -1,24 +1,22 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>htmlapp</title>
 	<meta charset="utf-8" />
     <link
 </head>
 <body>
     <h1>
-        This is the new React App
+        This is the html/js App
     </h1>
 
-    <ul>
-        <li>Thinktecture.IdentityModel.Core</li>
-
-    </ul>
-
-    <a id="btn-gettoken" href="javascript:getToken()">Get token</a>
-    <input id="txt-token" type="text" />
-
-    <a id="btn-callapi" href="javascript:callApi()">Call Api</a>
+    <table class="table">
+        <tr>
+            <td><a href="javascript:callApi()" id="btn-gettoken">Call API</a></td>
+            <td>Token:<input type="text" id="txt-token" class="form-control" readonly /></td>
+            <td>Api Result<input type="text" id="txt-apiresult" class="form-control" readonly /></td>
+        </tr>
+    </table>
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
     <script>
@@ -35,6 +33,7 @@
         }
 
         function callApi() {
+            getToken();
             var xmlHttp2 = new XMLHttpRequest();
             xmlHttp2.open("GET", "http://localhost:49949/api/values", true);
             var tokenValue = $('#txt-token').val();
@@ -42,7 +41,7 @@
             xmlHttp2.onreadystatechange = function () {
                 if (xmlHttp2.readyState == 4) {
                     var result = JSON.parse(xmlHttp2.responseText);
-                    alert(result);
+                    $('#txt-apiresult').val(result);
                 }
             }
             xmlHttp2.send(null);

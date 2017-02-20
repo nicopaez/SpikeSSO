@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>Auth Server</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -18,13 +18,15 @@
                 </button>
                 @Html.ActionLink("Authentication Server", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <!--
+            
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li><a href="http://localhost:49460/">ClassicWebsite</a></li>
+                    <li><a href="http://localhost:49567/">Client App</a></li>
+                    <li><a href="http://localhost:49949/">WebApi</a></li>
                 </ul>
             </div>
-                -->
+                
         </div>
     </div>
     <div class="container body-content">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ClientApp._Default" %>
+﻿<%@ Page Title="ClientApp" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ClientApp._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -26,7 +26,6 @@
     <script>
 
         function callApi() {
-            // alert('getting token');
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("POST", "http://localhost:49790/oauth/token", false); // false for synchronous request
             xmlHttp.send("grant_type=password&username=juan&password=juan");

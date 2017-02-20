@@ -21,18 +21,16 @@ namespace ClassicWebsite.Controllers
             string symmetricKeyAsBase64 = ConfigurationManager.AppSettings["as:AudienceSecret"];
 
             var keyByteArray = TextEncodings.Base64Url.Decode(symmetricKeyAsBase64);
-
-            //var securityKey = new InMemorySymmetricSecurityKey(keyByteArray);
+            
             var securityKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(keyByteArray);
 
-            // var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature, SecurityAlgorithms.Sha256Digest);
             var signingCredentials = new  Microsoft.IdentityModel.Tokens.SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var issued = DateTimeOffset.Now.ToUniversalTime();// data.Properties.IssuedUtc;
 
             var expires = DateTimeOffset.Now.AddHours(1).ToUniversalTime();
 
-            var _issuer = "http://auth/";
+            var _issuer = ConfigurationManager.AppSettings["as:Issuer"];
 
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, Thread.CurrentPrincipal.Identity.Name));
@@ -47,7 +45,7 @@ namespace ClassicWebsite.Controllers
             var tokenObject = new Token
             {
                 AccessToken = jwt,
-                TokenType = "bearer",
+                TokenType = "Bearer",
                 ExpiresIn = expires.Millisecond
             };
 

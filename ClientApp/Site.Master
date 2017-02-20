@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title>Client App</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -49,13 +49,13 @@
                     <a class="navbar-brand" runat="server" href="~/">Client App</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <!--
+                    
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a href="http://localhost:49790/">Auth Server</a></li>
+                        <li><a href="http://localhost:49460/">Classic Website</a></li>
+                        <li><a href="http://localhost:49949/">WebApi</a></li>
                     </ul>
-                    -->
+                    
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
