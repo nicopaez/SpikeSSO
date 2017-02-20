@@ -8,7 +8,9 @@ The following 4 projects are included in the solution:
 * Html/js ClienApp (http://localhost:49567/): is a html app (no server-side relevant code) that consumes the WebApi.
 * ClassicWebsite (http://localhost:49460/): is a tradicinal ASP.NET application that also hosts an html application. This html app consumes the WebApi.
 
-Scenario 1: html/js app consuming a webapi using oauth + jwt
+## Scenario 1: html/js app consuming a webapi using oauth + jwt
+
+This scenario is not relevant for this spike, it is just to show how the WebApi is not coupled with the client app and the app that generates the token.
 
 1. The html/js app is loaded (http://localhost:49567/)
 2. The user click on CallApi button
@@ -19,6 +21,6 @@ Scenario 1: html/js app consuming a webapi using oauth + jwt
 7. The html/js app displays the token and the api call result
 
 
-Notes:
+## Notes:
 * In a real scenario everything should run under https
 * Token signing is based on symmetric key that is generated based on AudienceSecret parameter
