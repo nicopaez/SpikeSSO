@@ -4,46 +4,28 @@
 
     <div class="jumbotron">
         <h1>Client App</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-        <a href="javascript:getToken()" id="btn-gettoken">Get Token</a>
-        <input type="text" id="txt-token" />
+        <p class="lead">This is a classic AspNet Webforms application that acts as a container for html&js code.</p>
+        <p>The only relevant code in this project in the default page. When the users clicks "Call API", 2 actions are triggered:</p>
+        <ol>
+            <li>The authentication server is called to get the Token. Credentials to get the token are hardcoded</li>
+            <li>The WebApi is called with the token previously get</li>
+        </ol>
+
+        <table class="table">
+            <tr>
+                <td><a href="javascript:callApi()" id="btn-gettoken">Call API</a></td>
+                <td>Token:<input type="text" id="txt-token" class="form-control" readonly /></td>
+                <td>Api Result<input type="text" id="txt-apiresult" class="form-control" readonly /></td>
+            </tr>
+        </table>
+
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
+  
 
     <script>
 
-        function getToken() {
+        function callApi() {
             // alert('getting token');
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open("POST", "http://localhost:49790/oauth/token", false); // false for synchronous request
@@ -59,11 +41,10 @@
             xmlHttp2.onreadystatechange = function () {
                 if (xmlHttp2.readyState == 4) {
                     var result = JSON.parse(xmlHttp2.responseText);
-                    alert(result);
+                    $('#txt-apiresult').val(result);
                 }
             }
             xmlHttp2.send(null);
-
         }
     </script>
 </asp:Content>
