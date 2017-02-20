@@ -4,11 +4,13 @@
 
 <div class="jumbotron">
     <h1>Classic WebSite</h1>
-    <p class="lead">This is a classic ASP.NET MVC application that with forms authentication. Additionally is hosts a pure HTML/JS application which interacts with a JWT Secure WebAPi hosted remotely. The following changes were applied to the basic solution:</p>
+    <p class="lead">This is a classic ASP.NET MVC application with forms authentication. Additionally it hosts a pure HTML/JS application which interacts with a JWT Secure WebAPi hosted remotely. The following changes were applied to the basic solution:</p>
     <ul>
         <li>A TokenController was added to generate a jwt token</li>
-        <li>WebAPI configuration was added to the Global.asax</li>
+        <li>WebAPI configuration was added to the Global.asax to enable token retrival</li>
         <li>Token generation parameters (audienceId, audienceSecret and issuer) were added to the web.config</li>
+        <li>The html/js application was added under /content/htmlapp</li>
+        <li>Web.config was modified to make html/js app only accesible by authenticated users</li>
     </ul>
     <p><a href="content/htmlapp" class="btn btn-primary btn-lg">Browse Html/Js app</a></p>
 </div>
