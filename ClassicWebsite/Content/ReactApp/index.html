@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link
+</head>
+<body>
+    <h1>
+        This is the new React App
+    </h1>
+
+    <ul>
+        <li>Thinktecture.IdentityModel.Core</li>
+
+    </ul>
+
+    <a id="btn-gettoken" href="javascript:getToken()">Get token</a>
+    <input id="txt-token" type="text" />
+
+    <a id="btn-callapi" href="javascript:callApi()">Call Api</a>
+
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script>
+
+        function getToken() {
+            // alert('getting token');
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "http://localhost:49460/api/token", false); // false for synchronous request
+            xmlHttp.send(null);
+            var stringToken = xmlHttp.responseText;
+            var token = JSON.parse(stringToken);
+            var tokenValue = token.access_token;
+            $('#txt-token').val(tokenValue);
+        }
+
+        function callApi() {
+            var xmlHttp2 = new XMLHttpRequest();
+            xmlHttp2.open("GET", "http://localhost:49949/api/values", true);
+            var tokenValue = $('#txt-token').val();
+            xmlHttp2.setRequestHeader("Authorization", "Bearer " + tokenValue);
+            xmlHttp2.onreadystatechange = function () {
+                if (xmlHttp2.readyState == 4) {
+                    var result = JSON.parse(xmlHttp2.responseText);
+                    alert(result);
+                }
+            }
+            xmlHttp2.send(null);
+        }
+    </script>
+
+</body>
+</html>
